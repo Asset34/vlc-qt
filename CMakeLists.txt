@@ -49,18 +49,24 @@ INCLUDE(CompilerConfig)
 INCLUDE(Dependencies)
 INCLUDE(Platform)
 
+#################
+# Build options #
+#################
+option(VLCQt_BUILD_DOCS "Build docs" ON)
+option(VLCQt_BUILD_TESTS "Build tests" ON)
 
 ###################
 # Compile and set #
 ###################
 ADD_SUBDIRECTORY(src)
-ADD_SUBDIRECTORY(docs)
-
+IF(VLCQt_BUILD_DOCS)
+    ADD_SUBDIRECTORY(docs)
+ENDIF()
 
 #########
 # Tests #
 #########
-IF(QT_VERSION MATCHES 5 AND NOT MOBILE)
+IF(VLCQt_BUILD_TESTS AND QT_VERSION MATCHES 5 AND NOT MOBILE)
     ENABLE_TESTING(true)
     ADD_SUBDIRECTORY(tests)
 
