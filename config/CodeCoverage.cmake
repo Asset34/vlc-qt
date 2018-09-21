@@ -58,7 +58,7 @@ FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _testrunner _outputname)
         COMMAND ${GENHTML_PATH} -t "VLC-Qt" -o ${_outputname} ${_outputname}.info
         COMMAND ${CMAKE_COMMAND} -E remove ${_outputname}.info.initial ${_outputname}.info.full
 
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
         COMMENT "Resetting code coverage counters to zero.\nProcessing code coverage counters and generating report."
     )
 

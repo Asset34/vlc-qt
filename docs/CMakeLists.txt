@@ -19,32 +19,32 @@
 #################
 
 CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/docs/Doxyfile.in"
-    "${CMAKE_BINARY_DIR}/docs/Doxyfile"
+    "${PROJECT_SOURCE_DIR}/docs/Doxyfile.in"
+    "${PROJECT_BINARY_DIR}/docs/Doxyfile"
     @ONLY
 )
 
 CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/CHANGELOG.md"
-    "${CMAKE_BINARY_DIR}/docs/changelog.md"
+    "${PROJECT_SOURCE_DIR}/CHANGELOG.md"
+    "${PROJECT_BINARY_DIR}/docs/changelog.md"
     COPYONLY)
 
 CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/docs/index.md"
-    "${CMAKE_BINARY_DIR}/docs/index.md"
+    "${PROJECT_SOURCE_DIR}/docs/index.md"
+    "${PROJECT_BINARY_DIR}/docs/index.md"
     COPYONLY)
 
 CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/BUILDING.md"
-    "${CMAKE_BINARY_DIR}/docs/building.md"
+    "${PROJECT_SOURCE_DIR}/BUILDING.md"
+    "${PROJECT_BINARY_DIR}/docs/building.md"
     COPYONLY)
 
 CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/docs/contributing.md"
-    "${CMAKE_BINARY_DIR}/docs/contributing.md"
+    "${PROJECT_SOURCE_DIR}/docs/contributing.md"
+    "${PROJECT_BINARY_DIR}/docs/contributing.md"
     COPYONLY)
 
 CONFIGURE_FILE(
-    "${CMAKE_SOURCE_DIR}/LICENSE.md"
-    "${CMAKE_BINARY_DIR}/docs/license.md"
+    "${PROJECT_SOURCE_DIR}/LICENSE.md"
+    "${PROJECT_BINARY_DIR}/docs/license.md"
     COPYONLY)

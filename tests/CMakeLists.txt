@@ -17,7 +17,7 @@
 #############################################################################
 # Macros #
 ##########
-SET(TestCommonFiles ${CMAKE_SOURCE_DIR}/tests/common/TestsCommon.cpp)
+SET(TestCommonFiles ${PROJECT_SOURCE_DIR}/tests/common/TestsCommon.cpp)
 
 MACRO(ADD_AUTO_TEST TestName)
     SET(Test_${TestName}_Srcs ${ARGN} ${TestCommonFiles})
@@ -49,11 +49,11 @@ MACRO(ADD_AUTO_TEST TestName)
 
     ADD_TEST(Test_${TestName} Test_${TestName})
     IF(MINGW OR MSVC)
-        SET_TESTS_PROPERTIES(Test_${TestName} PROPERTIES ENVIRONMENT "PATH=${WINDOWS_RUN_PATH};QML2_IMPORT_PATH=${CMAKE_BINARY_DIR}/src/plugins")
+        SET_TESTS_PROPERTIES(Test_${TestName} PROPERTIES ENVIRONMENT "PATH=${WINDOWS_RUN_PATH};QML2_IMPORT_PATH=${PROJECT_BINARY_DIR}/src/plugins")
     ELSEIF(STATIC AND ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-        SET_TESTS_PROPERTIES(Test_${TestName} PROPERTIES ENVIRONMENT "DYLD_LIBRARY_PATH=${LIBVLC_PROCESSED_DIR};QML2_IMPORT_PATH=${CMAKE_BINARY_DIR}/src/plugins")
+        SET_TESTS_PROPERTIES(Test_${TestName} PROPERTIES ENVIRONMENT "DYLD_LIBRARY_PATH=${LIBVLC_PROCESSED_DIR};QML2_IMPORT_PATH=${PROJECT_BINARY_DIR}/src/plugins")
     ELSE()
-        SET_TESTS_PROPERTIES(Test_${TestName} PROPERTIES ENVIRONMENT "QML2_IMPORT_PATH=${CMAKE_BINARY_DIR}/src/plugins")
+        SET_TESTS_PROPERTIES(Test_${TestName} PROPERTIES ENVIRONMENT "QML2_IMPORT_PATH=${PROJECT_BINARY_DIR}/src/plugins")
     ENDIF()
 ENDMACRO()
 
@@ -61,22 +61,22 @@ ENDMACRO()
 #################
 # Configuration #
 #################
-ADD_DEFINITIONS(-DQUICK_TEST_SOURCE_DIR=\"${CMAKE_SOURCE_DIR}/tests/qml/\")
+ADD_DEFINITIONS(-DQUICK_TEST_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}/tests/qml/\")
 
 CONFIGURE_FILE(
-    ${CMAKE_SOURCE_DIR}/tests/TestsConfig.h.in
-    ${CMAKE_BINARY_DIR}/tests/TestsConfig.h
+    ${PROJECT_SOURCE_DIR}/tests/TestsConfig.h.in
+    ${PROJECT_BINARY_DIR}/tests/TestsConfig.h
 )
 
 INCLUDE_DIRECTORIES(
-    ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/tests/common
-    ${CMAKE_BINARY_DIR}/include
-    ${CMAKE_BINARY_DIR}/src
-    ${CMAKE_BINARY_DIR}/tests
-    ${CMAKE_BINARY_DIR}/tests/core
-    ${CMAKE_BINARY_DIR}/tests/qml
-    ${CMAKE_BINARY_DIR}/tests/widgets
+    ${PROJECT_SOURCE_DIR}/src
+    ${PROJECT_SOURCE_DIR}/tests/common
+    ${PROJECT_BINARY_DIR}/include
+    ${PROJECT_BINARY_DIR}/src
+    ${PROJECT_BINARY_DIR}/tests
+    ${PROJECT_BINARY_DIR}/tests/core
+    ${PROJECT_BINARY_DIR}/tests/qml
+    ${PROJECT_BINARY_DIR}/tests/widgets
 )
 
 ADD_SUBDIRECTORY(core)

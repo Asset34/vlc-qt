@@ -18,11 +18,11 @@
 
 MACRO(SYMLINK_FRAMEWORK_TEST Target Path Framework)
     IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-        FILE(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/src/lib")
+        FILE(MAKE_DIRECTORY "${PROJECT_BINARY_DIR}/src/lib")
         ADD_CUSTOM_COMMAND(TARGET ${Target}
             PRE_LINK
-            COMMAND "${CMAKE_COMMAND}" -E create_symlink "${CMAKE_BINARY_DIR}/src/${Path}/${Framework}.framework" "${Framework}.framework"
-            WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/src/lib"
+            COMMAND "${CMAKE_COMMAND}" -E create_symlink "${PROJECT_BINARY_DIR}/src/${Path}/${Framework}.framework" "${Framework}.framework"
+            WORKING_DIRECTORY "${PROJECT_BINARY_DIR}/src/lib"
         )
     ENDIF()
 ENDMACRO()
@@ -35,7 +35,7 @@ MACRO(GENERATE_PKGCONFIG LibraryName LibraryFolder)
     )
 
     IF(PKGCONFIG)
-        INSTALL(FILES ${CMAKE_BINARY_DIR}/src/${LibraryFolder}/lib${LibraryName}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+        INSTALL(FILES ${PROJECT_BINARY_DIR}/src/${LibraryFolder}/lib${LibraryName}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
     ENDIF()
 ENDMACRO()
 
@@ -48,16 +48,16 @@ MACRO(GENERATE_WINDOWS_RC LibraryName LibraryFolder LibrarySrcs)
     # Compile resources with windres
     IF(MINGW)
         ADD_CUSTOM_COMMAND(
-            OUTPUT ${CMAKE_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.obj
+            OUTPUT ${PROJECT_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.obj
             COMMAND ${CMAKE_RC_COMPILER}
-            -i ${CMAKE_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.rc
-            -o ${CMAKE_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.obj
-            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/src/${LibraryFolder}"
+            -i ${PROJECT_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.rc
+            -o ${PROJECT_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.obj
+            WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}/src/${LibraryFolder}"
         )
-        LIST(APPEND ${LibrarySrcs} ${CMAKE_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.obj)
+        LIST(APPEND ${LibrarySrcs} ${PROJECT_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.obj)
     ENDIF()
 
     IF(MSVC)
-        LIST(APPEND ${LibrarySrcs} ${CMAKE_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.rc)
+        LIST(APPEND ${LibrarySrcs} ${PROJECT_BINARY_DIR}/src/${LibraryFolder}/${LibraryName}.rc)
     ENDIF()
 ENDMACRO()

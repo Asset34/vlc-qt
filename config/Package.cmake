@@ -18,33 +18,33 @@
 INCLUDE(CMakePackageConfigHelpers)
 
 WRITE_BASIC_PACKAGE_VERSION_FILE(
-    "${CMAKE_BINARY_DIR}/package/VLCQt/VLCQtConfigVersion.cmake"
+    "${PROJECT_BINARY_DIR}/package/VLCQt/VLCQtConfigVersion.cmake"
     VERSION ${VLCQT_VERSION}
     COMPATIBILITY AnyNewerVersion
 )
 CONFIGURE_FILE(config/package/VLCQtConfig.cmake
-    "${CMAKE_BINARY_DIR}/package/VLCQt/VLCQtConfig.cmake"
+    "${PROJECT_BINARY_DIR}/package/VLCQt/VLCQtConfig.cmake"
 )
 SET(VlcQtConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/VLCQt)
 INSTALL(
     FILES
         config/package/VLCQtConfig.cmake
-        "${CMAKE_BINARY_DIR}/package/VLCQt/VLCQtConfigVersion.cmake"
+        "${PROJECT_BINARY_DIR}/package/VLCQt/VLCQtConfigVersion.cmake"
     DESTINATION ${VlcQtConfigPackageLocation}
     COMPONENT Devel
 )
 
 WRITE_BASIC_PACKAGE_VERSION_FILE(
-    "${CMAKE_BINARY_DIR}/package/VLCQtCore/VLCQtCoreConfigVersion.cmake"
+    "${PROJECT_BINARY_DIR}/package/VLCQtCore/VLCQtCoreConfigVersion.cmake"
     VERSION ${VLCQT_VERSION}
     COMPATIBILITY AnyNewerVersion
 )
 EXPORT(EXPORT VLCQtCoreTargets
-       FILE "${CMAKE_BINARY_DIR}/package/VLCQtCore/VLCQtCoreTargets.cmake"
+       FILE "${PROJECT_BINARY_DIR}/package/VLCQtCore/VLCQtCoreTargets.cmake"
        NAMESPACE VLCQt::
 )
 CONFIGURE_FILE(config/package/VLCQtCoreConfig.cmake
-    "${CMAKE_BINARY_DIR}/package/VLCQtCore/VLCQtCoreConfig.cmake"
+    "${PROJECT_BINARY_DIR}/package/VLCQtCore/VLCQtCoreConfig.cmake"
 )
 SET(VlcQtCoreConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/VLCQtCore)
 INSTALL(EXPORT VLCQtCoreTargets
@@ -55,23 +55,23 @@ INSTALL(EXPORT VLCQtCoreTargets
 INSTALL(
     FILES
         config/package/VLCQtCoreConfig.cmake
-        "${CMAKE_BINARY_DIR}/package/VLCQtCore/VLCQtCoreConfigVersion.cmake"
+        "${PROJECT_BINARY_DIR}/package/VLCQtCore/VLCQtCoreConfigVersion.cmake"
     DESTINATION ${VlcQtCoreConfigPackageLocation}
     COMPONENT Devel
 )
 
 IF(NOT MOBILE)
     WRITE_BASIC_PACKAGE_VERSION_FILE(
-        "${CMAKE_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsConfigVersion.cmake"
+        "${PROJECT_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsConfigVersion.cmake"
         VERSION ${VLCQT_VERSION}
         COMPATIBILITY AnyNewerVersion
     )
     EXPORT(EXPORT VLCQtWidgetsTargets
-           FILE "${CMAKE_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsTargets.cmake"
+           FILE "${PROJECT_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsTargets.cmake"
            NAMESPACE VLCQt::
     )
     CONFIGURE_FILE(config/package/VLCQtWidgetsConfig.cmake
-        "${CMAKE_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsConfig.cmake"
+        "${PROJECT_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsConfig.cmake"
     )
     SET(VlcQtWidgetsConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/VLCQtWidgets)
     INSTALL(EXPORT VLCQtWidgetsTargets
@@ -82,7 +82,7 @@ IF(NOT MOBILE)
     INSTALL(
         FILES
             config/package/VLCQtWidgetsConfig.cmake
-            "${CMAKE_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsConfigVersion.cmake"
+            "${PROJECT_BINARY_DIR}/package/VLCQtWidgets/VLCQtWidgetsConfigVersion.cmake"
         DESTINATION ${VlcQtWidgetsConfigPackageLocation}
         COMPONENT Devel
     )
@@ -90,16 +90,16 @@ ENDIF()
 
 IF(QT_VERSION MATCHES 5)
     WRITE_BASIC_PACKAGE_VERSION_FILE(
-        "${CMAKE_BINARY_DIR}/package/VLCQtQml/VLCQtQmlConfigVersion.cmake"
+        "${PROJECT_BINARY_DIR}/package/VLCQtQml/VLCQtQmlConfigVersion.cmake"
         VERSION ${VLCQT_VERSION}
         COMPATIBILITY AnyNewerVersion
     )
     EXPORT(EXPORT VLCQtQmlTargets
-           FILE "${CMAKE_BINARY_DIR}/package/VLCQtQml/VLCQtQmlTargets.cmake"
+           FILE "${PROJECT_BINARY_DIR}/package/VLCQtQml/VLCQtQmlTargets.cmake"
            NAMESPACE VLCQt::
     )
     CONFIGURE_FILE(config/package/VLCQtQmlConfig.cmake
-        "${CMAKE_BINARY_DIR}/package/VLCQtQml/VLCQtQmlConfig.cmake"
+        "${PROJECT_BINARY_DIR}/package/VLCQtQml/VLCQtQmlConfig.cmake"
     )
     SET(VlcQtQmlConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/VLCQtQml)
     INSTALL(EXPORT VLCQtQmlTargets
@@ -110,7 +110,7 @@ IF(QT_VERSION MATCHES 5)
     INSTALL(
         FILES
             config/package/VLCQtQmlConfig.cmake
-            "${CMAKE_BINARY_DIR}/package/VLCQtQml/VLCQtQmlConfigVersion.cmake"
+            "${PROJECT_BINARY_DIR}/package/VLCQtQml/VLCQtQmlConfigVersion.cmake"
         DESTINATION ${VlcQtQmlConfigPackageLocation}
         COMPONENT Devel
     )

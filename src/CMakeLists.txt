@@ -18,8 +18,8 @@
 # Configuration #
 #################
 CONFIGURE_FILE(
-    ${CMAKE_SOURCE_DIR}/src/Config.h.in
-    ${CMAKE_BINARY_DIR}/src/Config.h
+    ${PROJECT_SOURCE_DIR}/src/Config.h.in
+    ${PROJECT_BINARY_DIR}/src/Config.h
 )
 
 
