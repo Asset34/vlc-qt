@@ -298,6 +298,13 @@ public:
     static QStringList audioCodec();
 
     /*!
+        \brief String of the specified audio codec
+        \param audio codec
+        \return audio codec string
+    */
+    static QString audioCodec(Vlc::AudioCodec codec);
+
+    /*!
         \brief Audio outputs strings
         \return audio outputs strings (QStringList)
     */
@@ -351,6 +358,13 @@ public:
         \return video codecs strings (QStringList)
     */
     static QStringList videoCodec();
+
+    /*!
+        \brief String of the specified video codec
+        \param video codec
+        \return video codec string
+    */
+    static QString videoCodec(Vlc::VideoCodec codec);
 
     /*!
         \brief Video outputs strings

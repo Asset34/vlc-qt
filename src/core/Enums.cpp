@@ -47,6 +47,31 @@ QStringList Vlc::audioCodec()
     return list;
 }
 
+QString Vlc::audioCodec(Vlc::AudioCodec codec)
+{
+    switch (codec) {
+    case Vlc::MPEG2Audio:
+        return "mpga";
+        break;
+    case Vlc::MP3:
+        return "mp3";
+        break;
+    case Vlc::MPEG4Audio:
+        return "mp4a";;
+        break;
+    case Vlc::Vorbis:
+        return "vorb";
+        break;
+    case Vlc::Flac:
+        return "flac";
+        break;
+    case  Vlc::NoAudio:
+    default:
+        return "none";
+        break;
+    }
+}
+
 QStringList Vlc::audioOutput()
 {
     QStringList list;
@@ -203,6 +228,28 @@ QStringList Vlc::videoCodec()
          << "theora";
 
     return list;
+}
+
+QString Vlc::videoCodec(Vlc::VideoCodec codec)
+{
+    switch (codec) {
+    case Vlc::MPEG2Video:
+        return "mpgv";
+        break;
+    case Vlc::MPEG4Video:
+        return "mp4a";
+        break;
+    case Vlc::H264:
+        return "h264";;
+        break;
+    case Vlc::Theora:
+        return "vorb";
+        break;
+    case  Vlc::NoVideo:
+    default:
+        return "none";
+        break;
+    }
 }
 
 QStringList Vlc::videoOutput()
