@@ -21,6 +21,37 @@
 Vlc::Vlc(QObject *parent)
     : QObject(parent) {}
 
+QString Vlc::state(Vlc::State state)
+{
+    switch (state) {
+    case Vlc::Idle:
+        return "Idle";
+        break;
+    case Vlc::Opening:
+        return "Opening";
+        break;
+    case Vlc::Buffering:
+        return "Buffering";
+        break;
+    case Vlc::Playing:
+        return "Playing";
+        break;
+    case Vlc::Paused:
+        return "Paused";
+        break;
+    case Vlc::Stopped:
+        return "Stopped";
+        break;
+    case Vlc::Ended:
+        return "Ended";
+        break;
+    case Vlc::Error:
+    default:
+        return "Error";
+        break;
+    }
+}
+
 QStringList Vlc::logLevel()
 {
     QStringList list;

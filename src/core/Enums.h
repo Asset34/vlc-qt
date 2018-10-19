@@ -286,6 +286,13 @@ public:
 
     // Functions
     /*!
+        \brief State string
+        \param state
+        \return state string (QString)
+    */
+    static QString state(Vlc::State state);
+
+    /*!
         \brief Log level strings
         \return log level strings (QStringList)
     */
