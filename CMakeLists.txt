@@ -52,8 +52,8 @@ INCLUDE(Platform)
 #################
 # Build options #
 #################
-option(VLCQt_BUILD_DOCS "Build docs" ON)
-option(VLCQt_BUILD_TESTS "Build tests" ON)
+option(VLCQT_BUILD_DOCS "Build docs" ON)
+option(VLCQT_BUILD_TESTS "Build tests" ON)
 
 ###################
 # Compile and set #
