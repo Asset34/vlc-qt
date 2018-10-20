@@ -72,6 +72,7 @@ QStringList Vlc::audioCodec()
          << "mpga"
          << "mp3"
          << "mp4a"
+         << "a52"
          << "vorb"
          << "flac";
 
@@ -88,7 +89,10 @@ QString Vlc::audioCodec(Vlc::AudioCodec codec)
         return "mp3";
         break;
     case Vlc::MPEG4Audio:
-        return "mp4a";;
+        return "mp4a";
+        break;
+    case Vlc::A52:
+        return "a52";
         break;
     case Vlc::Vorbis:
         return "vorb";
@@ -253,10 +257,13 @@ QStringList Vlc::videoCodec()
 {
     QStringList list;
     list << "none"
+         << "mp1v"
          << "mpgv"
          << "mp4v"
          << "h264"
-         << "theora";
+         << "vorb"
+         << "jpeg"
+         << "theo";
 
     return list;
 }
@@ -264,17 +271,23 @@ QStringList Vlc::videoCodec()
 QString Vlc::videoCodec(Vlc::VideoCodec codec)
 {
     switch (codec) {
+    case Vlc::MPEG1Video:
+        return "mp1v";
+        break;
     case Vlc::MPEG2Video:
         return "mpgv";
         break;
     case Vlc::MPEG4Video:
-        return "mp4a";
+        return "mp4v";
         break;
     case Vlc::H264:
         return "h264";;
         break;
     case Vlc::Theora:
-        return "vorb";
+        return "theo";
+        break;
+    case Vlc::JPEG:
+        return "jpeg";
         break;
     case  Vlc::NoVideo:
     default:

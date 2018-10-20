@@ -116,6 +116,7 @@ public:
         MPEG2Audio,
         MP3,
         MPEG4Audio,
+        A52,
         Vorbis,
         Flac
     };
@@ -261,10 +262,12 @@ public:
     */
     enum VideoCodec {
         NoVideo,
+        MPEG1Video,
         MPEG2Video,
         MPEG4Video,
         H264,
-        Theora
+        Theora,
+        JPEG,
     };
 
     /*!
