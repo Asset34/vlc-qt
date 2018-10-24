@@ -45,16 +45,20 @@ public:
         \brief VlcWidgetVolumeSlider constructor
 
         \param player media player
+        \param slider's orientation
         \param parent volume slider's parent GUI widget
     */
     explicit VlcWidgetVolumeSlider(VlcMediaPlayer *player,
+                                   Qt::Orientation orientation = Qt::Vertical,
                                    QWidget *parent = 0);
 
     /*!
         \brief VlcWidgetVolumeSlider constructor
+        \param slider's orientation
         \param parent volume slider's parent GUI widget
     */
-    explicit VlcWidgetVolumeSlider(QWidget *parent = 0);
+    explicit VlcWidgetVolumeSlider(Qt::Orientation orientation = Qt::Vertical,
+                                   QWidget *parent = 0);
 
     /*!
         \brief VlcWidgetVolumeSlider destructor

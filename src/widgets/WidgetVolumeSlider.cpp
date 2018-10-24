@@ -35,16 +35,18 @@
 #include "widgets/WidgetVolumeSlider.h"
 
 VlcWidgetVolumeSlider::VlcWidgetVolumeSlider(VlcMediaPlayer *player,
+                                             Qt::Orientation orientation,
                                              QWidget *parent)
-    : QSlider(parent),
+    : QSlider(orientation, parent),
       _vlcAudio(player->audio()),
       _vlcMediaPlayer(player)
 {
     initWidgetVolumeSlider();
 }
 
-VlcWidgetVolumeSlider::VlcWidgetVolumeSlider(QWidget *parent)
-    : QSlider(parent),
+VlcWidgetVolumeSlider::VlcWidgetVolumeSlider(Qt::Orientation orientation,
+                                             QWidget *parent)
+    : QSlider(orientation, parent),
       _vlcAudio(0),
       _vlcMediaPlayer(0)
 {
