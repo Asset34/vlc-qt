@@ -35,7 +35,8 @@ public:
 signals:
     void started();
     void ended();
-    void mediaDiscovered();
+    void mediaDiscovered(VlcMedia *media, int index);
+    void mediaLost(VlcMedia *media, int index);
 
 private:
     static void libvlc_callback(const libvlc_event_t *event,

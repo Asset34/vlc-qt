@@ -75,14 +75,22 @@ void VlcMediaDiscoverer::libvlc_mediaList_callback(const libvlc_event_t *event, 
     VlcMediaDiscoverer *core = static_cast<VlcMediaDiscoverer*>(data);
 
     switch (event->type) {
-    case libvlc_MediaListItemAdded:
-        core->_mediaList->addMedia(new VlcMedia(event->u.media_list_item_added.item));
+    case libvlc_MediaListItemAdded: {
+        VlcMedia *media = new VlcMedia(event->u.media_list_item_added.item);
+        core->_mediaList->addMedia(media);
 
-        emit core->mediaDiscovered();
+        emit core->mediaDiscovered(media, core->_mediaList->indexOf(media));
         break;
-    case libvlc_MediaListItemDeleted:
+    }
+    case libvlc_MediaListItemDeleted: {
+        int index = event->u.media_list_item_deleted.index;
+        VlcMedia *media = core->_mediaList->at(index);
+
         core->_mediaList->removeMedia(event->u.media_list_item_deleted.index);
+
+        emit core->mediaLost(media, index);
         break;
+    }
     default:
         break;
     }
